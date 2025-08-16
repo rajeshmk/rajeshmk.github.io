@@ -6,6 +6,7 @@
     <title>Rajesh MK - PHP Laravel Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <script>
         // Configure Tailwind dark mode
         tailwind.config = {
@@ -30,233 +31,6 @@
             }
         }
     </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .light-gradient-bg {
-            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
-        }
-
-        .hero-gradient-bg {
-            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #ede9fe 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dark .hero-gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #4c1d95 100%);
-        }
-
-        .hero-gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
-            z-index: 0;
-        }
-
-        .dark .hero-gradient-bg::before {
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%);
-        }
-
-        .hero-gradient-bg > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark .nav-blur {
-            background: rgba(17, 24, 39, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark .nav-scrolled {
-            background: rgba(17, 24, 39, 0.95);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::before,
-        .nav-link.active::before {
-            width: 80%;
-        }
-        
-        .skill-tag {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-        }
-        
-        .project-card {
-            transition: all 0.4s ease;
-            background: linear-gradient(145deg, #ffffff, #f3f4f6);
-            border: 1px solid rgba(229, 231, 235, 0.3);
-        }
-        
-        .dark .project-card {
-            background: linear-gradient(145deg, #1e293b, #334155);
-            border: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
-        }
-        
-        .dark .project-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .typing::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        .scroll-smooth {
-            scroll-behavior: smooth;
-        }
-        
-        .hero-pattern {
-            background-image: radial-gradient(circle at 25px 25px, rgba(0,0,0,0.1) 2px, transparent 0);
-            background-size: 50px 50px;
-        }
-        
-        .dark .hero-pattern {
-            background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2px, transparent 0);
-        }
-        
-        .theme-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        .theme-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            display: flex;
-            align-items: center;
-            padding: 4px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-            z-index: 2;
-        }
-        
-        .slider .icon {
-            position: absolute;
-            transition: .4s;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .slider .sun {
-            left: 8px;
-            opacity: 0;
-        }
-        
-        .slider .moon {
-            right: 8px;
-            opacity: 1;
-        }
-        
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
-        input:checked + .slider .sun {
-            opacity: 1;
-        }
-        
-        input:checked + .slider .moon {
-            opacity: 0;
-        }
-    </style>
 </head>
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white scroll-smooth">
     <!-- Navigation -->
@@ -387,7 +161,11 @@
                         <h4 class="text-lg font-semibold text-yellow-600 dark:text-yellow-400 mb-2">Spreets Success</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             Core developer in the Spreets team, Australia's leading deals comparison website, 
-                            which was acquired by Yahoo for $40 million in 2011.
+                            which was
+                            <a href="https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Yahoo" target="_blank" class="text-blue-500 hover:underline">
+                                acquired by Yahoo for $40 million in 2011.
+                                <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                            </a>
                         </p>
                     </div>
                     <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
@@ -480,9 +258,9 @@
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Gemini</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Grok</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Claude</span>
-                        <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Perplexity</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Replit</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Cursor</span>
+                        <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Perplexity</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Kilo Code</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Tabnine</span>
                         <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Codeium</span>
@@ -751,21 +529,48 @@
             <p class="text-xl mb-12 text-gray-200">
                 Ready to bring your ideas to life? Let's discuss your next project.
             </p>
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
+
+            <!-- Availability & Work Info -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
                 <div class="glass-effect p-6 rounded-lg">
-                    <i class="fab fa-whatsapp text-3xl text-green-400 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-white">WhatsApp</h3>
-                    <span class="masked-phone text-gray-300" data-part1="+91" data-part2="97473" data-part3="66161"></span>
+                    <i class="fas fa-clock text-3xl text-green-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Availability</h3>
+                    <p class="text-gray-300 text-sm">Available for new projects</p>
+                    <p class="text-gray-300 text-xs mt-1">Freelance • Part-time • IST Timezone</p>
                 </div>
                 <div class="glass-effect p-6 rounded-lg">
-                    <i class="fas fa-envelope text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-white">Email</h3>
-                    <span class="masked-email text-gray-300" data-user="mkrajesh.kdy" data-domain="gmail.com"></span>
+                    <i class="fas fa-dollar-sign text-3xl text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Pricing Models</h3>
+                    <p class="text-gray-300 text-sm">Flexible pricing options</p>
+                    <p class="text-gray-300 text-xs mt-1">Hourly • Project-based • Complexity-based</p>
                 </div>
                 <div class="glass-effect p-6 rounded-lg">
-                    <i class="fas fa-map-marker-alt text-3xl text-red-400 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-white">Location</h3>
-                    <span class="masked-location text-gray-300" data-part1="Kozhikode," data-part2="Kerala," data-part3="India"></span>
+                    <i class="fas fa-cogs text-3xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Development</h3>
+                    <p class="text-gray-300 text-sm">Agile & Sprint methodology</p>
+                    <p class="text-gray-300 text-xs mt-1">Iterative • Collaborative • Quality-focused</p>
+                </div>
+            </div>
+
+            <!-- Support & Services -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 mb-12 border border-white border-opacity-20">
+                <h3 class="text-2xl font-semibold mb-4 text-white">Post-Launch Support</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <div class="text-center md:text-left">
+                        <i class="fas fa-tools text-2xl text-orange-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold text-white mb-2">Bug Fixes & Updates</h4>
+                        <p class="text-gray-300 text-sm">Quick fixes and updates available on demand</p>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <i class="fas fa-headset text-2xl text-pink-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold text-white mb-2">Ongoing Support</h4>
+                        <p class="text-gray-300 text-sm">Technical support and maintenance services</p>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <i class="fas fa-shield-alt text-2xl text-cyan-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold text-white mb-2">AMC Available</h4>
+                        <p class="text-gray-300 text-sm">Annual Maintenance Contracts for large projects</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -824,212 +629,23 @@
             </div>
 
             <div class="border-t border-gray-700 pt-8">
-        <p class="text-gray-400">
+                <p class="text-gray-400">
                     © 2025 Rajesh MK. All rights reserved.
                 </p>
                 <p class="text-gray-500 text-sm mt-2">
-                    Built with <i class="fas fa-heart text-red-500"></i> using Tailwind CSS
-        </p>
+                    Built with
+                    <i class="fas fa-heart text-red-500"></i>
+                    using Tailwind CSS
+                </p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Dark mode toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        
-        function setTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        
-        // Check for saved theme preference
-        if (localStorage.getItem('theme') === 'dark' || 
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme(true);
-            themeToggle.checked = true;
-            themeToggleMobile.checked = true;
-        }
-        
-        themeToggle.addEventListener('change', (e) => {
-            setTheme(e.target.checked);
-            themeToggleMobile.checked = e.target.checked;
-        });
-        
-        themeToggleMobile.addEventListener('change', (e) => {
-            setTheme(e.target.checked);
-            themeToggle.checked = e.target.checked;
-        });
+    <span class="masked-whatsapp" data-part1="+91" data-part2="97473" data-part3="66161">
+        <div class="whatsapp-tooltip">Chat with me on WhatsApp</div>
+        <i class="fab fa-whatsapp"></i>
+    </span>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-        // Active navigation highlighting
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', function() {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Add animation on scroll for project cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Typing effect for the hero section
-        const typingText = document.querySelector('.typing');
-        const texts = ['PHP Laravel Developer', 'Full Stack Engineer', 'Backend Specialist', 'Software Architect'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeText() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(typeText, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(typeText, 500);
-            } else {
-                setTimeout(typeText, isDeleting ? 50 : 100);
-            }
-        }
-
-        // Start typing effect after page load
-        window.addEventListener('load', () => {
-            setTimeout(typeText, 1000);
-        });
-    </script>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".masked-phone").forEach(function (elem) {
-            const phone = `${elem.dataset.part1} ${elem.dataset.part2} ${elem.dataset.part3}`;
-            // Remove spaces and plus signs from link
-            const waLink = `${elem.dataset.part1}${elem.dataset.part2}${elem.dataset.part3}`
-                .replace(/\s+/g, '')
-                .replace(/\+/g, '');
-
-            const existingHtml = elem.innerHTML;
-
-            elem.innerHTML = `<a href="https://wa.me/${waLink}" class="hover:text-blue-400" target="_blank">${existingHtml} ${phone}</a>`;
-        });
-
-        document.querySelectorAll(".masked-email").forEach(function (elem) {
-            const email = `${elem.dataset.user}@${elem.dataset.domain}`;
-            const existingHtml = elem.innerHTML;
-            elem.innerHTML = `<a href="mailto:${email}" class="hover:text-blue-400">${existingHtml} ${email}</a>`;
-        });
-
-        document.querySelectorAll(".masked-location").forEach(function (elem) {
-            const location = `${elem.dataset.part1} ${elem.dataset.part2} ${elem.dataset.part3}`;
-            const mapQuery = encodeURIComponent(location);
-            const existingHtml = elem.innerHTML;
-            elem.innerHTML = `<a href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" 
-                                target="_blank" 
-                                class="hover:text-blue-400">
-                                ${existingHtml}
-                                ${location}
-                            </a>`;
-        });
-    });
-    </script>
+    <script src="/scripts.js"></script>
 </body>
 </html>
