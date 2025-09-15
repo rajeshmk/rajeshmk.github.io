@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Generator - Pricing Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="bg-gray-50 p-6">
+    <div id="app" class="max-w-7xl mx-auto">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Code Generator - Pricing Calculator</h1>
+        
+        <!-- Exchange Rate Input -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="flex items-center space-x-4">
+                <label class="font-medium text-gray-700">USD to INR Exchange Rate:</label>
+                <input 
+                    v-model.number="usdToInr" 
+                    type="number" 
+                    step="0.01"
+                    class="w-20 px-3 py-2 border border-gray-300 rounded-md text-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+                <span class="text-gray-500 text-sm">₹{{ usdToInr }} per $1</span>
+            </div>
+        </div>
+        
+        <!-- Services Section -->
+        <div class="bg-white rounded-lg shadow overflow-hidden mb-8">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-blue-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">Service</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">Starting Price</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">USD/Year</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">USD/Month</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR/Year</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR/Month</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR (50 Users)</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR (100 Users)</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR (500 Users)</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR (1000 Users)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr v-for="(service, index) in services" :key="index" :class="service.highlight ? 'bg-green-50' : 'bg-white'">
+                            <td class="px-4 py-3 font-medium text-gray-700">{{ service.name }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ service.startingPrice }}</td>
+                            <td class="px-4 py-3">
+                                <input 
+                                    v-if="service.name === CG_SINGLE || service.name === CG_UNLIMITED"
+                                    v-model.number="service.usdYear" 
+                                    type="number"
+                                    min="0"
+                                    class="w-20 px-2 py-1 border border-gray-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                <span 
+                                    v-else
+                                    class="w-20 px-2 py-1 text-gray-600 text-center inline-block"
+                                >
+                                    {{ service.usdYear.toFixed(2) }}
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear / 12).toFixed(2) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr / 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr * 50 / 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr * 100 / 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr * 500 / 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (service.usdYear * usdToInr * 1000 / 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pack Section -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-blue-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">Pack</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">Users</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR/Month</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">INR/Year</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr v-for="(pack, index) in packs" :key="index" class="bg-green-50">
+                            <td class="px-4 py-3 font-medium text-gray-700">{{ pack.name }}</td>
+                            <td class="px-4 py-3">
+                                <input 
+                                    v-model.number="pack.users" 
+                                    type="number"
+                                    min="0"
+                                    class="w-20 px-2 py-1 border border-gray-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                            </td>
+                            <td class="px-4 py-3 text-gray-600">{{ (pack.users * getPackRate(pack.name) * usdToInr).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ (pack.users * getPackRate(pack.name) * usdToInr * 12).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                        </tr>
+                        <tr class="bg-gray-50 font-bold">
+                            <td class="px-4 py-3 text-gray-700">Total</td>
+                            <td class="px-4 py-3 text-gray-700">{{ totalUsers }}</td>
+                            <td class="px-4 py-3 text-gray-700">{{ totalMonthlyINR.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                            <td class="px-4 py-3 text-gray-700">{{ totalYearlyINR.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 class="font-semibold text-blue-800 mb-2">Instructions:</h3>
+            <ul class="text-sm text-blue-700 space-y-1">
+                <li>• Edit the <strong>USD/Year</strong> values in the services table to adjust pricing</li>
+                <li>• Modify the <strong>USD/INR exchange rate</strong> above to update all INR calculations</li>
+                <li>• Change the <strong>Users</strong> count in the Pack section to calculate total costs</li>
+                <li>• All other values are automatically calculated based on your inputs</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    usdToInr: 85,
+                    CG_SINGLE: 'CG (Single)',
+                    CG_UNLIMITED: 'CG (Unlimited)',
+                    services: [
+                        {
+                            name: 'Laravel Nova (Single)',
+                            startingPrice: '$99/year',
+                            usdYear: 79.00,
+                            highlight: false
+                        },
+                        {
+                            name: 'Laravel Nova (Unlimited)',
+                            startingPrice: '$299/year',
+                            usdYear: 249.00,
+                            highlight: false
+                        },
+                        {
+                            name: 'Quick Admin (Unlimited)',
+                            startingPrice: '$99.99/year',
+                            usdYear: 99.99,
+                            highlight: false
+                        },
+                        {
+                            name: 'Craftable Pro (Single)',
+                            startingPrice: '€149/year',
+                            usdYear: 174.00,
+                            highlight: false
+                        },
+                        {
+                            name: 'Craftable Pro (Unlimited)',
+                            startingPrice: '€399/year',
+                            usdYear: 467.00,
+                            highlight: false
+                        },
+                        {
+                            name: 'CG (Single)',
+                            startingPrice: '',
+                            usdYear: 50.00,
+                            highlight: true
+                        },
+                        {
+                            name: 'CG (Unlimited)',
+                            startingPrice: '',
+                            usdYear: 150.00,
+                            highlight: true
+                        }
+                    ],
+                    packs: [
+                        {
+                            name: 'CG (Single)',
+                            users: 300
+                        },
+                        {
+                            name: 'CG (Unlimited)',
+                            users: 50
+                        }
+                    ]
+                }
+            },
+            computed: {
+                cgSingleRate() {
+                    return this.services.find(s => s.name === this.CG_SINGLE).usdYear / 12;
+                },
+                cgUnlimitedRate() {
+                    return this.services.find(s => s.name === this.CG_UNLIMITED).usdYear / 12;
+                },
+                totalUsers() {
+                    return this.packs.reduce((sum, pack) => sum + pack.users, 0);
+                },
+                totalMonthlyINR() {
+                    return this.packs.reduce((sum, pack) => {
+                        return sum + (pack.users * this.getPackRate(pack.name) * this.usdToInr);
+                    }, 0);
+                },
+                totalYearlyINR() {
+                    return this.totalMonthlyINR * 12;
+                }
+            },
+            methods: {
+                getPackRate(packName) {
+                    if (packName === this.CG_SINGLE) {
+                        return this.cgSingleRate;
+                    } else if (packName === this.CG_UNLIMITED) {
+                        return this.cgUnlimitedRate;
+                    }
+                    return 0;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
